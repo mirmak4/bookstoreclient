@@ -18,10 +18,11 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
-      # Use mvn clean and package as the standard maven build phase
+      # Install all dependencies
       - run:
         name: Install
         command: npm run install
+      # Build project
       - run:
           name: Build
           command: npm run build
@@ -36,4 +37,4 @@ workflows:
   sample: # This is the name of the workflow, feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     jobs:
-      - install-build-and-test
+      - build-and-test
