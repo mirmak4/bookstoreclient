@@ -20,8 +20,8 @@ jobs:
       - checkout
       # Install all dependencies
       - run:
-        name: Install
-        command: npm install
+          name: Install
+          command: npm install
       # Build project
       - run:
           name: Build
