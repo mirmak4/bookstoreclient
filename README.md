@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/mirmak4/bookstoreclient/tree/master.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/mirmak4/bookstoreclient/tree/master)
+
 ## Available Scripts
 
 In the project directory, you can run:
