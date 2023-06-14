@@ -18,7 +18,11 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
-      # Use mvn clean and package as the standard maven build phase
+      # Install all dependencies
+      - run:
+          name: Install
+          command: npm install
+      # Build project
       - run:
           name: Build
           command: npm run build
