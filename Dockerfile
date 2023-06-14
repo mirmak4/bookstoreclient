@@ -5,6 +5,8 @@ FROM node:16-alpine
 WORKDIR /app
 # Copy app files
 COPY . .
+# ==== INSTALL =====
+RUN npm install -g npm@9.7.1
 # ==== BUILD =====
 # Install dependencies (npm ci makes sure the exact versions in the lockfile gets installed)
 RUN npm ci 
