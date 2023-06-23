@@ -9,7 +9,8 @@ COPY . .
 RUN npm install -g npm@9.7.1
 # ==== BUILD =====
 # Install dependencies (npm ci makes sure the exact versions in the lockfile gets installed)
-RUN npm ci 
+# allow legacy for mui styles in angular 18
+RUN npm ci --legacy-peer-deps
 # Build the app
 RUN npm run build
 # ==== TEST =====
