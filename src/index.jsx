@@ -7,10 +7,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import storeWithMiddleware from './helpers/ReduxStoreHelper';
-
-// const createSoteWithMiddleware = applyMiddleware(reduxThunk)(createStore);
-// ReactDOM.render(<App />, document.getElementById("root"));
+import { storeWithMiddleware } from './helpers/ReduxStoreHelper';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

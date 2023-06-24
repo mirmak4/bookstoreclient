@@ -24,9 +24,9 @@ const getBooksReducerData = {
 
 const testData = {
     getBooksActionData: getBooksActionData,
-    getBooksActionType: 'BOOKS_RESPONSE',
     initialBookReducerState: initialBookReducerState,
-    getBooksReducerData: getBooksReducerData
+    getBooksReducerData: getBooksReducerData,
+    getBooksActionType: getBooksActionType
 };
 
 export default testData;

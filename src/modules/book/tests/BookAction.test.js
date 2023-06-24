@@ -1,7 +1,7 @@
 import axios from 'axios';
 import getBooksAction from '../BookAction';
 import testData from './helpers/TestDataProvider';
-import mockedStore from './helpers/TestSetupProvider';
+import { mockedStore } from './helpers/TestSetupProvider';
 
 jest.mock('axios');
 
