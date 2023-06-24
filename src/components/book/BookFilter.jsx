@@ -2,7 +2,7 @@ import { Box, Paper } from '@mui/material';
 import React from 'react';
 import styles from './BookStyles.module.css';
 
-const BookFiler = () => {
+const BookFilter = () => {
 
     return (
         <Box className={styles.bookFilter}>
@@ -13,4 +13,4 @@ const BookFiler = () => {
     );
 };
 
-export default BookFiler;
+export default BookFilter;

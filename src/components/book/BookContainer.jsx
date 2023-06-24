@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { Box } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import getBooksAction from '../../modules/book/BookAction';
-import BookFiler from './BookFilter';
+import BookFilter from './BookFilter';
 import styles from './BookStyles.module.css';
 import { getBooksSelector } from '../../modules/book/BookSelector';
+import BookList from './BookList';
 
 const BookContainer = () => {
 
@@ -12,18 +13,21 @@ const BookContainer = () => {
     useEffect(() => {
         dispatch(getBooksAction());
     }, [dispatch]);
-    const books = useSelector(getBooksSelector);
-    console.log(books);
-    
-    return (
-        <Box className={styles.bookContainer}>
-            <BookFiler />
+    const booksResponse = useSelector(getBooksSelector);
 
-            <Box className={styles.bookList}>
-                Here we will display all books.
+    if (booksResponse && booksResponse.books) {
+    
+        return (
+            <Box className={styles.bookContainer}>
+                <BookFilter />
+
+                <Box className={styles.bookList}>
+                    
+                    <BookList books={booksResponse.books} />
+                </Box>
             </Box>
-        </Box>
-    );
+        );
+    }
 }
 
 export default BookContainer;
