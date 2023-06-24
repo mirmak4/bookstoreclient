@@ -14,7 +14,7 @@ const getBooksActionType = 'BOOKS_RESPONSE';
 
 const testData = {
     getBooksActionData: getBooksActionData,
-    getBooksActionType: 'BOOKS_RESPONSE'
+    getBooksActionType: getBooksActionType
 };
 
 export default testData;

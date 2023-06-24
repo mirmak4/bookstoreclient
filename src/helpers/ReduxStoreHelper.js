@@ -6,4 +6,8 @@ const createSoteWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const storeWithMiddleware = createSoteWithMiddleware(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ 
     && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-export default storeWithMiddleware;
+// export default storeWithMiddleware;
+export {
+    createSoteWithMiddleware,
+    storeWithMiddleware
+}
