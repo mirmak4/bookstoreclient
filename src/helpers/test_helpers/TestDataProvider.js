@@ -22,11 +22,20 @@ const getBooksReducerData = {
 };
 // BOOK REDUCER END
 
-const testData = {
-    getBooksActionData: getBooksActionData,
-    initialBookReducerState: initialBookReducerState,
-    getBooksReducerData: getBooksReducerData,
-    getBooksActionType: getBooksActionType
+// BOOK CONTAINER START
+const bookContainerStateWithData = {
+    initialState: {
+        bookReducer: {
+            getBooksReducerData
+        }
+    }
 };
+// BOOK CONTAINER END
 
-export default testData;
+export {
+    getBooksActionData,
+    initialBookReducerState,
+    getBooksReducerData,
+    getBooksActionType,
+    bookContainerStateWithData
+};

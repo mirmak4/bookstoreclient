@@ -1,9 +1,9 @@
 import configureStore from 'redux-mock-store';
 import reduxThunk from 'redux-thunk';
-import { createSoteWithMiddleware } from '../../../../helpers/ReduxStoreHelper';
+import { createSoteWithMiddleware } from '../ReduxStoreHelper';
 import React from 'react';
 import { Provider } from 'react-redux';
-import reducers from '../../../../modules';
+import reducers from '../../modules';
 import { render } from '@testing-library/react';
 
 const middleware = [reduxThunk];
@@ -14,14 +14,21 @@ const renderWithRedux = (
     {
         initialState,
         store = createSoteWithMiddleware(reducers, initialState)
-    }) => ({
-        ...render(
-            <Provider store={store}>{ui}</Provider>
-        )
-    });
+    }
+) => ({
+    ...render(
+        <Provider store={store}>{ui}</Provider>
+    )
+});
 
-// export default mockedStore;
+const renderWithReact = (
+    ui
+) => ({
+    ...render(ui)
+});
+
 export {
     mockedStore,
-    renderWithRedux
+    renderWithRedux,
+    renderWithReact
 }
