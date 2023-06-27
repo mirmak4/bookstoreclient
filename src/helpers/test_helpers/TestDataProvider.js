@@ -26,8 +26,14 @@ const getBooksReducerData = {
 const bookContainerStateWithData = {
     initialState: {
         bookReducer: {
-            getBooksReducerData
+            ...getBooksReducerData
         }
+    }
+};
+
+const bookReducerStateWithData = {
+    bookReducer: {
+        ...getBooksReducerData
     }
 };
 // BOOK CONTAINER END
@@ -37,5 +43,6 @@ export {
     initialBookReducerState,
     getBooksReducerData,
     getBooksActionType,
-    bookContainerStateWithData
+    bookContainerStateWithData,
+    bookReducerStateWithData
 };

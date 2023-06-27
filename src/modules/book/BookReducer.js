@@ -1,5 +1,5 @@
 const INITIAL_BOOK_REDUCER_STATE = {
-    books: []
+    books: [],
     // bookResponse: {books: []}
 }
 
