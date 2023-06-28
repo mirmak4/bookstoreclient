@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getBooksAction } from '../../modules/book/BookAction';
 import BookFilter from './BookFilter';
 import styles from './BookStyles.module.css';
-import { getBooksSelector, getBookPromiseSelector } from '../../modules/book/BookSelector';
+import { getBooksSelector, getBooksPromiseSelector } from '../../modules/book/BookSelector';
 import BookList from './BookList';
 
 const BookContainer = () => {
@@ -16,7 +16,8 @@ const BookContainer = () => {
     }, [dispatch]);
     
     const booksResponse = useSelector(getBooksSelector);
-    const bookPromise = useSelector(getBookPromiseSelector);
+    
+    const booksPromise = useSelector(getBooksPromiseSelector);
 
     console.log("Book Container useSelector books: ", booksResponse);
     
@@ -24,33 +25,32 @@ const BookContainer = () => {
         <Box className={styles.bookContainer}>
           <BookFilter />
           <Box className={styles.bookList}>
-            {
-              // Le's display Loader
-              bookPromise.isPending && (
-                <Box ml={5}>
-                  <Skeleton
-                    data-testid="book-loader"
-                    variant="rect"
-                    animation="pulse"
-                    width="80%"
-                    height={200}
-                  />
-                </Box>
-              )
-            }
-            {
-              // Display error message
-              bookPromise.isErrorOccured && (
-                <div data-testid="book-error-messsage"> Error message ... </div>
-              )
-            }
-            {
-              // Display Data
-              bookPromise.isFulfilled && <BookList booksResponse={booksResponse} />
-            }
+              {
+                  booksPromise.isPending && (
+                      <Box ml={5}>
+                          <Skeleton 
+                            data-testid="book-loader" 
+                            variant='rect' 
+                            animation="pulse" 
+                            width="80%" 
+                            height={200}
+                          />
+                      </Box>
+                  )
+              }
+              {
+                  booksPromise.isErrorOccured && (
+                      <div data-testid="book-error-message">Error occurred...</div>
+                  )
+              }
+              {
+                  booksPromise.isFulfilled && (
+                      <BookList booksResponse={booksResponse} />
+                  )
+              }
           </Box>
         </Box>
-      );
+    );
 }
 
 export default BookContainer;

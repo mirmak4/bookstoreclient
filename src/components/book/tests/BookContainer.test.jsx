@@ -38,4 +38,34 @@ describe('BookContainer', () => {
         expect(BookList).toHaveBeenLastCalledWith({ booksResponse: books }, {});
         expect(BookList).toBeDefined();
     });
+
+    it('should show loader when isPending is true', () => {
+        // given
+        getBooksAction.mockImplementation(() => (dispatch) => {
+            dispatch({
+                type: "BOOKLISTPENDING",
+            });
+        });
+
+        // when
+        const { getByTestId } = renderWithRedux(<BookContainer />, {});
+
+        // then
+        expect(getByTestId("book-loader")).toBeInTheDocument();
+    });
+
+    it('should show error when isErrorOccured is true', () => {
+        // given
+        getBooksAction.mockImplementation(() => (dispatch) => {
+            dispatch({
+                type: "BOOKLISTERROR",
+            });
+        });
+
+        // when
+        const { getByTestId } = renderWithRedux(<BookContainer />, {});
+
+        // then
+        expect(getByTestId("book-error-message")).toBeInTheDocument();
+    });
 });
