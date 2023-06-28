@@ -1,6 +1,5 @@
 import reduxThunk from 'redux-thunk';
 // import { legacy_createStore as createStore, applyMiddleware } from "redux";
-// import { createStore, applyMiddleware } from "redux";
 import { configureStore } from '@reduxjs/toolkit';
 import reducers from '../modules';
 
