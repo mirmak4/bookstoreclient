@@ -18,6 +18,17 @@ const getBooksActionSample = {
     type: getBooksActionType,
     payload: getBooksActionData
 };
+
+const getBooksByTitleActionType = 'BOOKSBYTITLE';
+
+const getBooksByTitleActionSample = {
+    type: getBooksByTitleActionType,
+    payload: getBooksActionData
+};
+
+const getBooksActionError = {
+    type: 'BOOKLISTERROR'
+};
 // GET BOOKS ACTION END
 
 // BOOK REDUCER START
@@ -34,6 +45,30 @@ const booksReducerSample =  {
         isFulfilled: false,
         isErrorOccured: false
     }
+};
+
+const booksByTitleReducerSample = {
+    booksResponse: {
+        books: getBooksActionData
+    }
+};
+
+const booksByTitleActionReducerSample = {
+    type: 'BOOKSBYTITLE',
+    payload: {
+        ...getBooksActionData
+    }
+};
+
+const booksByTitleActionNewState = {
+    booksResponse: {
+        ...getBooksActionData
+    },
+    promise: {
+        "isErrorOccured": false,
+        "isFulfilled": false,
+        "isPending": false,
+    },
 };
 // BOOK REDUCER END
 
@@ -97,5 +132,9 @@ export {
     bookListResponse,
     bookItem,
     getBooksActionSample,
-    booksReducerSample
+    booksReducerSample,
+    getBooksByTitleActionSample,
+    getBooksActionError,
+    booksByTitleActionReducerSample,
+    booksByTitleActionNewState
 };
