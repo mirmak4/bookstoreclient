@@ -1,5 +1,5 @@
 import axios from 'axios';
-import getBooksAction from '../BookAction';
+import { getBooksAction } from '../BookAction';
 import { getBooksActionData, getBooksActionType } from '../../../helpers/test_helpers/TestDataProvider';
 import { mockedStore } from '../../../helpers/test_helpers/TestSetupProvider';
 
@@ -15,8 +15,8 @@ describe('BookActions test', () => {
 
         await store.dispatch(getBooksAction());
         const actions = store.getActions();
-        expect(actions.length).toEqual(1);
-        expect(actions[0]).toEqual({
+        expect(actions.length).toEqual(3);
+        expect(actions[1]).toEqual({
             type: getBooksActionType,
             payload: getBooksActionData
         });

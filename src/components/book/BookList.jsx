@@ -6,22 +6,24 @@ import BookListItem from './BookListItem';
 
 const propTypes = {
 
-    books: Proptypes.arrayOf(
-        Proptypes.shape({
-            id: Proptypes.number.isRequired,
-            title: Proptypes.string.isRequired,
-            description: Proptypes.string.isRequired,
-            author: Proptypes.string.isRequired,
-            releaseYear: Proptypes.number.isRequired,
-        })
-    ).isRequired,
+    booksResponse: Proptypes.shape({
+        books: Proptypes.arrayOf(
+            Proptypes.shape({
+                id: Proptypes.number.isRequired,
+                title: Proptypes.string.isRequired,
+                description: Proptypes.string.isRequired,
+                author: Proptypes.string.isRequired,
+                releaseYear: Proptypes.number.isRequired,
+            })
+        ).isRequired,
+    })
 };
 
-const BookList = ({books}) => {
+const BookList = ({booksResponse}) => {
 
     return (
         <Box className={styles.bookList} ml={5}>
-            {books.map((book) => {
+            {booksResponse.books.map((book) => {
                 return (
                     <BookListItem book={book} key={book.id} />
                 );

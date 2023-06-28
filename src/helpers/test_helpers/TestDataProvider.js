@@ -9,7 +9,7 @@ const getBooksActionData = [
     }
 ];
 
-const getBooksActionType = 'BOOKS_RESPONSE';
+const getBooksActionType = 'BOOKLIST';
 // GET BOOKS ACTION END
 
 // BOOK REDUCER START
