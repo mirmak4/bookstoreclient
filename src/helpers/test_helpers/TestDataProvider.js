@@ -1,3 +1,5 @@
+import { INITIAL_BOOK_REDUCER_STATE } from "../../modules/book/BookReducer";
+
 // GET BOOKS ACTION START
 const getBooksActionData = [
     {
@@ -10,15 +12,28 @@ const getBooksActionData = [
 ];
 
 const getBooksActionType = 'BOOKLIST';
+
+// with Sample suffix so that it dont conflicts with getBooksAction of BookAction
+const getBooksActionSample = {
+    type: getBooksActionType,
+    payload: getBooksActionData
+};
 // GET BOOKS ACTION END
 
 // BOOK REDUCER START
-const initialBookReducerState = {
-    books: []
-};
+const initialBookReducerState = INITIAL_BOOK_REDUCER_STATE;
 
 const getBooksReducerData = {
     books: getBooksActionData
+};
+
+const booksReducerSample =  {
+    booksResponse: getBooksActionData,
+    promise: {
+        isPending: false,
+        isFulfilled: false,
+        isErrorOccured: false
+    }
 };
 // BOOK REDUCER END
 
@@ -80,5 +95,7 @@ export {
     bookContainerStateWithData,
     bookReducerStateWithData,
     bookListResponse,
-    bookItem
+    bookItem,
+    getBooksActionSample,
+    booksReducerSample
 };
