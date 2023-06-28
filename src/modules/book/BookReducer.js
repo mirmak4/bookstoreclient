@@ -19,6 +19,13 @@ const bookReducer = (state = INITIAL_BOOK_REDUCER_STATE, action) => {
             }
         }
 
+        case 'BOOKSBYTITLE': {
+            return {
+                ...state,
+                booksResponse: action.payload
+            }
+        }
+
         case 'BOOKLISTPENDING': {
             return {
                 ...state,
