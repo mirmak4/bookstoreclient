@@ -134,6 +134,19 @@ export const userLoginInitialState = {
     },
 };
 
+export const userLoginActionResponse = {
+    data: {
+        token: jwtToken,
+    },
+};
+
+export const userLoginActionFinal = {
+    type: 'USERLOGIN',
+    payload: {
+        token: jwtToken,
+    },
+};
+
 export const userLoginFinalState = {
     ...INITIAL_USER_REDUCER_STATE,
     token: 'jwt token',
