@@ -1,16 +1,28 @@
 import bookReducer from "../BookReducer";
-import { getBooksActionData, getBooksActionType, initialBookReducerState, getBooksReducerData } 
+import { initialBookReducerState, booksReducerSample, booksByTitleActionNewState, getBooksActionSample, booksByTitleActionReducerSample } 
     from "../../../helpers/test_helpers/TestDataProvider";
 
 describe('bookReducer', () => {
 
     it('should return correct state', () => {
-        const action = {
-            type: getBooksActionType,
-            payload: getBooksActionData
-        };
+        // given
+        const action = getBooksActionSample;
 
+        // when
         const newState = bookReducer(initialBookReducerState, action);
-        expect(newState).toEqual(getBooksReducerData);
+
+        // then
+        expect(newState).toEqual(booksReducerSample);
+    });
+
+    it('should return right new state for books by title action', () => {
+        // given
+        const action = booksByTitleActionReducerSample;
+
+        // when
+        const newState = bookReducer(initialBookReducerState, action);
+
+        // then
+        expect(newState).toEqual(booksByTitleActionNewState);
     });
 })
