@@ -122,6 +122,24 @@ const bookItem = {
 
 // BOOK LIST END
 
+// USER START
+export const jwtToken = 'jwt token';
+
+export const userLoginActionResponse = {
+    data: {
+        token: jwtToken,
+    },
+};
+
+export const userLoginActionFinal = {
+    type: 'USERLOGIN',
+    payload: {
+        token: jwtToken,
+    },
+};
+// USER END
+
+
 export {
     getBooksActionData,
     initialBookReducerState,
