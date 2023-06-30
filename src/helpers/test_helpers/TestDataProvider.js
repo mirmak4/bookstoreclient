@@ -1,4 +1,5 @@
 import { INITIAL_BOOK_REDUCER_STATE } from "../../modules/book/BookReducer";
+import { INITIAL_USER_REDUCER_STATE } from "../../modules/user/UserReducer";
 
 // GET BOOKS ACTION START
 const getBooksActionData = [
@@ -121,6 +122,24 @@ const bookItem = {
 // BOOK LIST ITEM END
 
 // BOOK LIST END
+
+
+// USER START
+export const jwtToken = 'jwt token';
+
+export const userLoginInitialState = {
+    type: 'USERLOGIN',
+    payload: {
+        token: jwtToken,
+    },
+};
+
+export const userLoginFinalState = {
+    ...INITIAL_USER_REDUCER_STATE,
+    token: 'jwt token',
+};
+// USER END
+
 
 export {
     getBooksActionData,
