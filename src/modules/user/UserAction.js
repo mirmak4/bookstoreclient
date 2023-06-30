@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { tokenKey, userLoginActionName } from '../../helpers/Consts';
 import { login } from './UserService';
 
 /**
@@ -17,11 +17,11 @@ export const loginAction = (userName, password) => async (dispatch) => {
     const response = await login(userName, password);
 
     // save received jwt token in local storage
-    window.localStorage.setItem('bookstore-token', response.data.token);
+    window.localStorage.setItem(tokenKey, response.data.token);
 
     // dispatch redux action
     dispatch({
-        type: 'USERLOGIN',
+        type: userLoginActionName,
         payload: response.data
     });
 };

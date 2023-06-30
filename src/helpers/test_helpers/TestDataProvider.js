@@ -125,6 +125,7 @@ const bookItem = {
 
 // USER START
 export const jwtToken = 'jwt token';
+const userLoginActionName = 'USERLOGIN';
 
 export const userLoginActionResponse = {
     data: {
@@ -133,14 +134,14 @@ export const userLoginActionResponse = {
 };
 
 export const userLoginActionFinal = {
-    type: 'USERLOGIN',
+    type: userLoginActionName,
     payload: {
         token: jwtToken,
     },
 };
 
 export const userLoginInitialState = {
-    type: 'USERLOGIN',
+    type: userLoginActionName,
     payload: {
         token: jwtToken,
     },

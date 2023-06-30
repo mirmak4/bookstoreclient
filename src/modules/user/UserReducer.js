@@ -1,3 +1,5 @@
+import { userLoginActionName } from "../../helpers/Consts";
+
 export const INITIAL_USER_REDUCER_STATE = {
     token: '',
     promise: {
@@ -12,7 +14,7 @@ const userReducer = (state = INITIAL_USER_REDUCER_STATE, action) => {
     switch(action.type) {
 
         // return new state when 'USERLOGIN' action dispatch
-        case 'USERLOGIN': {
+        case userLoginActionName: {
             return {
                 ...state,
                 token: action.payload.token,

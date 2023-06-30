@@ -1,0 +1,44 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.paper {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 100%;
+}
+
+.itemContainer {
+    margin-top: 3rem;
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.inputStyle {
+    width: 100%;
+    /* margin: 0 20%; */
+}
+
+.buttonStyle {
+    width: 100%;
+    /* margin: 0 25%; */
+    height: 3rem;
+}
+
+.formContainer {
+    width: 50%;
+    margin: 0 25%;
+}
+
+.formStyle {
+    width: 100%;
+    /* margin: 0 10%; */
+}
+
+.headerText {
+    text-align: center;
+}
