@@ -1,14 +1,16 @@
 import { Paper, TextField, Typography, Button } from '@mui/material';
 import { Box } from '@mui/system';
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './LoginStyles.module.css';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginAction } from '../../modules/user/UserAction';
-import { passwordMaxChars, passwordMaxText, passwordMinChars, passwordMinText, 
+import { loginErrorSnack, loginSuccessSnack, passwordMaxChars, passwordMaxText, passwordMinChars, passwordMinText, 
     passwordRequiredText, passwordText, userNameMaxChars, userNameMaxText, userNameMinChars, 
     userNameMinText, userNameRequiredText, userNameText } from '../../helpers/Consts';
+import { getUserPromise } from '../../modules/user/UserSelector';
+import { useSnackbar } from 'notistack';
 
 const validationSchema = yup.object({
     username: yup
@@ -28,6 +30,26 @@ const validationSchema = yup.object({
 const Login = () => {
 
     const dispatch = useDispatch();
+    const loginPromise = useSelector(getUserPromise);
+    const { enqueueSnackbar } = useSnackbar();
+    useEffect(() => {
+        if (loginPromise.isErrorOccured) {
+            enqueueSnackbar(
+                loginErrorSnack,
+                {
+                    variant: 'error'
+                }
+            );
+        }
+        else if (loginPromise.isFulfilled) {
+            enqueueSnackbar(
+                loginSuccessSnack,
+                {
+                    variant: 'success'
+                }
+            );
+        }
+    }, [loginPromise, enqueueSnackbar]);
 
     const formik = useFormik({
         initialValues: {
@@ -80,7 +102,13 @@ const Login = () => {
                     </Box>
 
                     <Box className={ styles.itemContainer } >
-                        <Button type='submit' variant='contained' color='primary' className={ styles.buttonStyle } >
+                        <Button 
+                            type='submit' 
+                            variant='contained' 
+                            color='primary' 
+                            className={ styles.buttonStyle } 
+                            disabled={ loginPromise.isPending }
+                        >
                             Login
                         </Button>
                     </Box>

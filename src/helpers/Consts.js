@@ -21,5 +21,12 @@ export const tokenKey = 'bookstore-token';
 
 // action
 export const userLoginActionName = 'USERLOGIN';
+export const userPromisePending = 'USERPENDING';
+export const userPromiseSuccess = 'USERSUCCESS';
+export const userPromiseError = 'USERERROR';
+
+// errors
+export const loginErrorSnack = 'Username or password is incorrect!';
+export const loginSuccessSnack = 'Login success!';
 
 // LOGIN END

@@ -13,9 +13,9 @@
 
 .itemContainer {
     margin-top: 3rem;
-    width: 50%;
-    margin-left: 25%;
-    margin-right: 25%;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 .inputStyle {
@@ -30,8 +30,8 @@
 }
 
 .formContainer {
-    width: 50%;
-    margin: 0 25%;
+    width: 40%;
+    margin: 0 30%;
 }
 
 .formStyle {

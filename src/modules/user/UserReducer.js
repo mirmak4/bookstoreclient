@@ -1,4 +1,4 @@
-import { userLoginActionName } from "../../helpers/Consts";
+import { userLoginActionName, userPromiseError, userPromisePending, userPromiseSuccess } from "../../helpers/Consts";
 
 export const INITIAL_USER_REDUCER_STATE = {
     token: '',
@@ -18,6 +18,39 @@ const userReducer = (state = INITIAL_USER_REDUCER_STATE, action) => {
             return {
                 ...state,
                 token: action.payload.token,
+            };
+        }
+
+        case userPromisePending: {
+            return {
+                ...state,
+                promise: {
+                    isPending: true,
+                    isFulfilled: false,
+                    isErrorOccured: false
+                },
+            };
+        }
+
+        case userPromiseSuccess: {
+            return {
+                ...state,
+                promise: {
+                    isPending: false,
+                    isFulfilled: true,
+                    isErrorOccured: false
+                },
+            };
+        }
+
+        case userPromiseError: {
+            return {
+                ...state,
+                promise: {
+                    isPending: false,
+                    isFulfilled: false,
+                    isErrorOccured: true
+                },
             };
         }
 

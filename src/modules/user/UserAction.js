@@ -1,4 +1,4 @@
-import { tokenKey, userLoginActionName } from '../../helpers/Consts';
+import { tokenKey, userLoginActionName, userPromiseError, userPromisePending, userPromiseSuccess } from '../../helpers/Consts';
 import { login } from './UserService';
 
 /**
@@ -13,15 +13,31 @@ import { login } from './UserService';
  */
 export const loginAction = (userName, password) => async (dispatch) => {
 
-    // issue axios request to login api
-    const response = await login(userName, password);
+    try {
+        dispatch({
+            type: userPromisePending
+        });
 
-    // save received jwt token in local storage
-    window.localStorage.setItem(tokenKey, response.data.token);
+        // issue axios request to login api
+        const response = await login(userName, password);
 
-    // dispatch redux action
-    dispatch({
-        type: userLoginActionName,
-        payload: response.data
-    });
+        // save received jwt token in local storage
+        window.localStorage.setItem(tokenKey, response.data.token);
+
+        // dispatch redux action
+        dispatch({
+            type: userLoginActionName,
+            payload: response.data
+        });
+
+        dispatch({
+            type: userPromiseSuccess
+        });
+    } catch (error) {
+        console.log(error);
+
+        dispatch({
+            type: userPromiseError
+        });
+    }
 };
