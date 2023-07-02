@@ -6,7 +6,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 const ApiAuth = () => {
 
     const token = useSelector(getUserToken);
-    const isUserLoggedIn = token != null && token != '';
+    const isUserLoggedIn = token !== null && token !== '';
 
     return isUserLoggedIn ? <Outlet /> : <Navigate to="/login" />;
 };
