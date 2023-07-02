@@ -11,6 +11,7 @@ import { loginErrorSnack, loginSuccessSnack, passwordMaxChars, passwordMaxText, 
     userNameMinText, userNameRequiredText, userNameText } from '../../helpers/Consts';
 import { getUserPromise } from '../../modules/user/UserSelector';
 import { useSnackbar } from 'notistack';
+import { useNavigate } from 'react-router-dom';
 
 const validationSchema = yup.object({
     username: yup
@@ -32,6 +33,8 @@ const Login = () => {
     const dispatch = useDispatch();
     const loginPromise = useSelector(getUserPromise);
     const { enqueueSnackbar } = useSnackbar();
+    const navigation = useNavigate();
+
     useEffect(() => {
         if (loginPromise.isErrorOccured) {
             enqueueSnackbar(
@@ -48,8 +51,9 @@ const Login = () => {
                     variant: 'success'
                 }
             );
+            navigation('/');
         }
-    }, [loginPromise, enqueueSnackbar]);
+    }, [loginPromise, enqueueSnackbar, navigation]);
 
     const formik = useFormik({
         initialValues: {

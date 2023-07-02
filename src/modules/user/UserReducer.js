@@ -1,7 +1,7 @@
-import { userLoginActionName, userPromiseError, userPromisePending, userPromiseSuccess } from "../../helpers/Consts";
+import { tokenKey, userLoginActionName, userPromiseError, userPromisePending, userPromiseSuccess } from "../../helpers/Consts";
 
 export const INITIAL_USER_REDUCER_STATE = {
-    token: '',
+    token: window.localStorage.getItem(tokenKey),
     promise: {
         isPending: false,
         isFulfilled: false,

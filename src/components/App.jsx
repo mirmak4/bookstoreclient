@@ -4,6 +4,7 @@ import BookContainer from './book/BookContainer';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './user/Login';
 import { SnackbarProvider } from 'notistack';
+import ApiAuth from './auth/ApiAuth';
 
 // Routes is enabling just one Route at a time
 const App = () => {
@@ -15,7 +16,12 @@ const App = () => {
                     <Routes>
                         <Route path='/login' element={ <Login /> } />
                         
-                        <Route exact path='/' element={ <BookContainer /> } />
+                        <Route path='/' element={<ApiAuth />}>
+
+                            <Route path='/' element={<BookContainer />} />
+                            
+                        </Route>
+
                     </Routes>
                 </Layout>
             </Router>

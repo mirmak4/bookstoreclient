@@ -22,7 +22,11 @@ export const loginAction = (userName, password) => async (dispatch) => {
         const response = await login(userName, password);
 
         // save received jwt token in local storage
-        window.localStorage.setItem(tokenKey, response.data.token);
+        let bearerToken = '' + response.data.token;
+        if (!bearerToken.startsWith('Bearer ')) {
+            bearerToken = 'Bearer ' + bearerToken;
+        }
+        window.localStorage.setItem(tokenKey, bearerToken);
 
         // dispatch redux action
         dispatch({
@@ -35,6 +39,7 @@ export const loginAction = (userName, password) => async (dispatch) => {
         });
     } catch (error) {
         console.log(error);
+        window.localStorage.setItem(tokenKey, '');
 
         dispatch({
             type: userPromiseError
