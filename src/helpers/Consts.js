@@ -7,6 +7,7 @@ export const userNameText = 'Enter your user name';
 export const userNameRequiredText = 'User name is required';
 export const userNameMinText = `User name should have at least ${userNameMinChars} characters`;
 export const userNameMaxText = `User name should not have more than ${userNameMaxChars} characters`;
+export const usernameLabel = 'User name';
 
 // password
 export const passwordMinChars = 8;
@@ -15,6 +16,7 @@ export const passwordText = 'Enter your password';
 export const passwordMinText = `Password should have at least ${passwordMinChars} characters`;
 export const passwordMaxText = `Password should not have more than ${passwordMaxChars} characters`;
 export const passwordRequiredText = 'Password is required';
+export const passwordLabel = 'Password';
 
 // local storage
 export const tokenKey = 'bookstore-token';

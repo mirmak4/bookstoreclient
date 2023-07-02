@@ -6,8 +6,8 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginAction } from '../../modules/user/UserAction';
-import { loginErrorSnack, loginSuccessSnack, passwordMaxChars, passwordMaxText, passwordMinChars, passwordMinText, 
-    passwordRequiredText, passwordText, userNameMaxChars, userNameMaxText, userNameMinChars, 
+import { loginErrorSnack, loginSuccessSnack, passwordLabel, passwordMaxChars, passwordMaxText, passwordMinChars, passwordMinText, 
+    passwordRequiredText, passwordText, usernameLabel, userNameMaxChars, userNameMaxText, userNameMinChars, 
     userNameMinText, userNameRequiredText, userNameText } from '../../helpers/Consts';
 import { getUserPromise } from '../../modules/user/UserSelector';
 import { useSnackbar } from 'notistack';
@@ -78,7 +78,7 @@ const Login = () => {
                             name='username'
                             id='username'
                             data-testid='username-id'
-                            label='User Name'
+                            label={usernameLabel}
                             variant='outlined'
                             placeholder={userNameText}
                             value={ formik.values.username }
@@ -94,7 +94,7 @@ const Login = () => {
                             name='password'
                             id='password'
                             data-testid='password-id'
-                            label='Password'
+                            label={passwordLabel}
                             variant='outlined'
                             placeholder={passwordText}
                             value={ formik.values.password }

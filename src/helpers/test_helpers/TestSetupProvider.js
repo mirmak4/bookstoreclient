@@ -5,6 +5,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import reducers from '../../modules';
 import { render } from '@testing-library/react';
+import { SnackbarProvider } from 'notistack';
 
 const middleware = [reduxThunk];
 const mockedStore = configureStore(middleware);
@@ -17,7 +18,11 @@ const renderWithRedux = (
     }
 ) => ({
     ...render(
-        <Provider store={store}>{ui}</Provider>
+        <Provider store={store}>
+            <SnackbarProvider maxSnack={3}>
+                {ui}
+            </SnackbarProvider>
+        </Provider>
     )
 });
 
