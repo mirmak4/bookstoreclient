@@ -12,6 +12,8 @@ import { loginErrorSnack, loginSuccessSnack, passwordLabel, passwordMaxChars, pa
 import { getUserPromise } from '../../modules/user/UserSelector';
 import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
+import { IsUserLoggedIn } from '../../helpers/UesrHelper';
+import { Navigate } from 'react-router-dom';
 
 const validationSchema = yup.object({
     username: yup
@@ -67,58 +69,67 @@ const Login = () => {
     });
 
     return (
-        <Box className={ styles.formContainer } >
-        <form className={ styles.formStyle } autoComplete='off' noValidate onSubmit={ formik.handleSubmit }>
-            <Box className={ styles.wrapper } >
-                <Paper className={ styles.paper } >
-                    <Typography className={ styles.headerText } variant='h4'>Book Store Login</Typography>
+        <Box>
+        {
+            IsUserLoggedIn() && (
+                <Navigate to="/" />
+            )
+        }
+        {
+            <Box className={ styles.formContainer } >
+                <form className={ styles.formStyle } autoComplete='off' noValidate onSubmit={ formik.handleSubmit }>
+                    <Box className={ styles.wrapper } >
+                        <Paper className={ styles.paper } >
+                            <Typography className={ styles.headerText } variant='h4'>Book Store Login</Typography>
 
-                    <Box className={ styles.itemContainer } >
-                        <TextField 
-                            name='username'
-                            id='username'
-                            data-testid='username-id'
-                            label={usernameLabel}
-                            variant='outlined'
-                            placeholder={userNameText}
-                            value={ formik.values.username }
-                            onChange={ formik.handleChange }
-                            helperText={ formik.touched.username && formik.errors.username }
-                            error={ formik.touched.username && Boolean(formik.errors.username) }
-                            className={ styles.inputStyle }
-                        />
-                    </Box>
+                            <Box className={ styles.itemContainer } >
+                                <TextField 
+                                    name='username'
+                                    id='username'
+                                    data-testid='username-id'
+                                    label={usernameLabel}
+                                    variant='outlined'
+                                    placeholder={userNameText}
+                                    value={ formik.values.username }
+                                    onChange={ formik.handleChange }
+                                    helperText={ formik.touched.username && formik.errors.username }
+                                    error={ formik.touched.username && Boolean(formik.errors.username) }
+                                    className={ styles.inputStyle }
+                                />
+                            </Box>
 
-                    <Box className={ styles.itemContainer } >
-                        <TextField 
-                            name='password'
-                            id='password'
-                            data-testid='password-id'
-                            label={passwordLabel}
-                            variant='outlined'
-                            placeholder={passwordText}
-                            value={ formik.values.password }
-                            onChange={ formik.handleChange }
-                            helperText={ formik.touched.password && formik.errors.password }
-                            error={ formik.touched.password && Boolean(formik.errors.password) }
-                            className={ styles.inputStyle }
-                        />
-                    </Box>
+                            <Box className={ styles.itemContainer } >
+                                <TextField 
+                                    name='password'
+                                    id='password'
+                                    data-testid='password-id'
+                                    label={passwordLabel}
+                                    variant='outlined'
+                                    placeholder={passwordText}
+                                    value={ formik.values.password }
+                                    onChange={ formik.handleChange }
+                                    helperText={ formik.touched.password && formik.errors.password }
+                                    error={ formik.touched.password && Boolean(formik.errors.password) }
+                                    className={ styles.inputStyle }
+                                />
+                            </Box>
 
-                    <Box className={ styles.itemContainer } >
-                        <Button 
-                            type='submit' 
-                            variant='contained' 
-                            color='primary' 
-                            className={ styles.buttonStyle } 
-                            disabled={ loginPromise.isPending }
-                        >
-                            Login
-                        </Button>
+                            <Box className={ styles.itemContainer } >
+                                <Button 
+                                    type='submit' 
+                                    variant='contained' 
+                                    color='primary' 
+                                    className={ styles.buttonStyle } 
+                                    disabled={ loginPromise.isPending }
+                                >
+                                    Login
+                                </Button>
+                            </Box>
+                        </Paper>
                     </Box>
-                </Paper>
+                </form>
             </Box>
-        </form>
+        }
         </Box>
     );
 };
