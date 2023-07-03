@@ -1,10 +1,10 @@
 import axios from 'axios';
 import baseUrl from '../../config';
 
-export const login = (userName, password) => {
+export const login = (username, password) => {
     
-    return axios.post(`${baseUrl}/login`, {
-        userName,
+    return axios.post(`${baseUrl}/bookstore/login`, {
+        username,
         password
     });
 };
